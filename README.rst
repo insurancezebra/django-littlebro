@@ -16,17 +16,16 @@ Requirements
 I just started working on this project, so an installation package is forthcoming.
 In the mean time:
 
-* Install django-littlebro into your environment
-* Install and configure celery, django-celery, carrot, pymongo and a message broker
-like RabbitMQ or ghettoq
+ * Install django-littlebro into your environment
+ * Install and configure celery, django-celery, carrot, pymongo and a message broker like RabbitMQ or ghettoq
  * add ``littlebro.apps.events`` to your ``INSTALLED_APPS`` and syncdb
  * customize your settings, see ``littlebro.conf.defaults`` for complete list of
    options and their default values
 
 .. _`configure celery`: http://celeryproject.org/introduction.html#configuring-your-django-project-to-use-celery
 
-Use
-===
+Usage
+=====
 
 For now, only granular view-level tracking is enabled. To invoke it, simply import
 the tracker:
