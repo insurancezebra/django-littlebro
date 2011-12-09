@@ -1,35 +1,50 @@
-====================
-Django event tracker
-====================
+===============================
+Little Brother is watching ...
+===============================
 
-Django-event-tracker is a simple application that enables event tracking via a
-simple HTTP GET request.
+django-littlebro is a granular event tracking framework designed to be used in a
+manner similar to Django's built-in cache system.
 
-Installation
+It works with Celery and MongoDB to provide quick, asynchronous event tracking.
+
+The project is a fork of HonzaKrai's django-event-tracker:
+https://github.com/ella/django-event-tracker
+
+Requirements
 ============
 
- * install django event tracker into your system or ``virtualenv``
- * `configure celery`_ to work with your project
- * add ``eventtracker`` to your ``INSTALLED_APPS`` and ``eventtracker.urls``
-   somewhere in your URLs
- * customize your settings, see ``eventtracker.conf`` for complete list of
+I just started working on this project, so an installation package is forthcoming.
+In the mean time:
+
+ * Install django-littlebro into your environment
+ * Install and configure celery, django-celery, carrot, pymongo and a message broker like RabbitMQ or ghettoq
+ * add ``littlebro.apps.events`` to your ``INSTALLED_APPS`` and syncdb
+ * customize your settings, see ``littlebro.conf.defaults`` for complete list of
    options and their default values
 
 .. _`configure celery`: http://celeryproject.org/introduction.html#configuring-your-django-project-to-use-celery
 
-Use
-===
+Usage
+=====
 
-To store an event, do a GET request on ``eventtracker.views.track_event``. The
-parameter in the URL mapping will determine the name of the event (only
-required attribute) and you can supply additional parameters by passing in a
-json object as GET parameter ``params``.
+For now, only granular view-level tracking is enabled. To invoke it, simply import
+the tracker:
 
-Depending on your ``EVENTS_TRACKER_BACKEND`` settings the event will either be
-directly stored in the django database (value ``'dummy'``, do not use in
-production) or sent into a queue using ``carrot``. The data will be collected
-by celeryd once every three minutes (by default) and stored into MongoDB.
+from littlebro import tracker
 
-Querying and analyzing of the data is left entirely to MongoDB since it is very
-good at that.
+And then use its track_event method to record events:
+
+tracker.track_event('event-name', {'extra': 'parameters', 'go': 'here'})
+
+Use the 'dummy' tracker and 'simple' backend to save tracked events synchronously to
+the database. Use the 'celery' tracker and 'mongo' to enable asynchronous processing
+with celery. Note that you'll have to be running celeryd and celerybeat daemons for
+that to work.
+
+Note
+====
+
+This was written on Dec. 9, 2011, after only two days of work on the project. Still
+a lot of work to do, but we should have a totall functional, easy to install package
+up in a week or so.
 
