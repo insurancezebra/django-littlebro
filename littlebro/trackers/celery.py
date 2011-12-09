@@ -6,7 +6,9 @@ from littlebro.trackers.base import BaseTracker
 from littlebro.conf import settings
 
 def _get_carrot_object(klass, **kwargs):
-    "Helper function to create Publisher and Consumer objects."
+    """
+    Helper function to create Publisher and Consumer objects.
+    """
     return klass(
             connection=DjangoBrokerConnection(),
             exchange=settings.EXCHANGE,
@@ -16,7 +18,9 @@ def _get_carrot_object(klass, **kwargs):
         )
     
 def _close_carrot_object(carobj):
-    "Helper function to close Consumer or Publisher safely."
+    """
+    Helper function to close Consumer or Publisher safely.
+    """
     if carobj:
         try:
             carobj.close()
@@ -31,7 +35,8 @@ publisher = None
 
 class CeleryTracker(BaseTracker):
     """
-    Saves events into a Celery task queue for asynchronous processing later.
+    Tracker that stored events into a Celery task queue for asynchronous
+    processing later.
     """
     def __init__(self, *args, **kwargs):
         # Somewhere in here: Test for Celery dependencies, throw exceptions

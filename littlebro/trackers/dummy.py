@@ -5,7 +5,8 @@ from littlebro import BACKEND_CLASSES
 
 class DummyTracker(BaseTracker):
     """
-    Saves tracking events synchronously into a regular DB table.
+    Saves tracking events synchronously into either a regular or Mongo DB table.
+    Primarily used for testing.
     """
     def __init__(self, *args, **kwargs):
         BaseTracker.__init__(self, *args, **kwargs)

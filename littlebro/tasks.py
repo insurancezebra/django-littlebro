@@ -5,7 +5,6 @@ from celery.registry import tasks
 from carrot.messaging import Consumer
 from pymongo.connection import Connection
 from littlebro.conf import settings
-from littlebro import models
 from littlebro.trackers.celery import _get_carrot_object, _close_carrot_object
 from littlebro import BACKEND_CLASSES
 
@@ -32,9 +31,7 @@ def collect_events():
 
         for message in consumer.iterqueue():
             e, t, p, c = message.decode()
-            if c:
-                collection = connection[settings.MONGODB_DB][c]
-            backend_cls().save(e, p, collection)
+            backend_cls().save(e, p, c)
             message.ack()
 
     finally:

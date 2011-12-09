@@ -1,14 +1,14 @@
 from django.conf import settings
 
 # Set backends for both tracker and database
-TRACKER_BACKEND = 'dummy' # Options are 'dummy' and 'celery'
-DB_BACKEND = 'mongo' # Options are 'dummy' and 'mongo'
+TRACKER_BACKEND = 'celery' # Options are 'dummy' and 'celery'
+DB_BACKEND = 'simple' # Options are 'simple' and 'mongo'
 
 # Settings for message routing in Celery
 # More information here: http://ask.github.com/celery/userguide/routing.html
-ROUTING_KEY = 'events'
-EXCHANGE = 'events'
-QUEUE = 'events'
+ROUTING_KEY = 'littlebro'
+EXCHANGE = 'littlebro'
+QUEUE = 'littlebro'
 
 # Length of time between asynchronous updates to database, in seconds.
 # Also known as the length of time between celerybeat cycles.
