@@ -44,7 +44,7 @@ that to work.
 Note
 ====
 
-This was written on Dec. 9, 20111, after only two days of work on the project. Still
+This was written on Dec. 9, 2011, after only two days of work on the project. Still
 a lot of work to do, but we should have a totall functional, easy to install package
 up in a week or so.
 
