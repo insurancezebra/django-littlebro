@@ -1,6 +1,7 @@
 import anyjson
+from time import time
 from littlebro.backends.base import BaseBackend
-from littlebro.apps.events.models import Event
+from littlebro.models import Event
 
 class SimpleBackend(BaseBackend):
     """
@@ -10,7 +11,7 @@ class SimpleBackend(BaseBackend):
     def __init__(self, *args, **kwargs):
         BaseBackend.__init__(self, *args, **kwargs)
         
-    def save(self, event, params={}, collection=None):
+    def save(self, event, time=time(), params={}, collection=None):
         """
         Save event to database.
         """

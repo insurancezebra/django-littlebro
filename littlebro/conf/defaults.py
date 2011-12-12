@@ -2,7 +2,7 @@ from django.conf import settings
 
 # Set backends for both tracker and database
 TRACKER_BACKEND = 'celery' # Options are 'dummy' and 'celery'
-DB_BACKEND = 'simple' # Options are 'simple' and 'mongo'
+DB_BACKEND = 'mongo' # Options are 'simple' and 'mongo'
 
 # Settings for message routing in Celery
 # More information here: http://ask.github.com/celery/userguide/routing.html

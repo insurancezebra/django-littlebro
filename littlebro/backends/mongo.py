@@ -43,7 +43,7 @@ class MongoBackend(BaseBackend):
         conn = self._connect()
         return conn[self._get_db()][self.collection]
        
-    def save(self, event, params={}, collection=None):
+    def save(self, event, time=time(), params={}, collection=None):
         """
         Save event in MongoDB collection.
         """
@@ -52,6 +52,6 @@ class MongoBackend(BaseBackend):
         col = self._get_collection()
         col.insert({
             'event': event,
-            'timestamp': datetime.fromtimestamp(time()),
+            'timestamp': datetime.fromtimestamp(time),
             'params': params
         })
