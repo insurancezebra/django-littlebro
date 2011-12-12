@@ -2,7 +2,7 @@ import importlib
 from littlebro.conf import settings
 from littlebro.trackers.base import InvalidTrackerError
 
-VERSION = (0, 1, 0)
+VERSION = (0, 2, 0)
 
 __version__ = VERSION
 __versionstr__ = '.'.join(map(str, VERSION))

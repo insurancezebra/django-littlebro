@@ -1,35 +1,9 @@
 from datetime import timedelta
 from time import time
-from carrot.connection import DjangoBrokerConnection
 from carrot.messaging import Publisher
 from littlebro.trackers.base import BaseTracker
 from littlebro.conf import settings
-
-def _get_carrot_object(klass, **kwargs):
-    """
-    Helper function to create Publisher and Consumer objects.
-    """
-    return klass(
-            connection=DjangoBrokerConnection(),
-            exchange=settings.EXCHANGE,
-            routing_key=settings.ROUTING_KEY,
-            exchange_type="topic",                                                                                     
-            **kwargs
-        )
-    
-def _close_carrot_object(carobj):
-    """
-    Helper function to close Consumer or Publisher safely.
-    """
-    if carobj:
-        try:
-            carobj.close()
-        except:
-            pass
-        try:
-            carobj.connection.close()
-        except:
-            pass
+from littlebro.utils import _get_carrot_object, _close_carrot_object
 
 publisher = None
 
@@ -39,7 +13,6 @@ class CeleryTracker(BaseTracker):
     processing later.
     """
     def __init__(self, *args, **kwargs):
-        # Somewhere in here: Test for Celery dependencies, throw exceptions
         BaseTracker.__init__(self, *args, **kwargs)
    
     def track_event(self, event, params={}, collection=None):

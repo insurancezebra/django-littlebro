@@ -5,9 +5,7 @@ from celery.registry import tasks
 from carrot.messaging import Consumer
 from pymongo.connection import Connection
 from littlebro.conf import settings
-from littlebro.trackers.celery import _get_carrot_object, _close_carrot_object
-from littlebro import BACKEND_CLASSES
-from littlebro.utils import _get_backend_cls
+from littlebro.utils import _get_backend_cls, _get_carrot_object, _close_carrot_object
 
 def collect_events():
     """
@@ -35,7 +33,9 @@ def collect_events():
                 pass
 
 class ProcessEventsTask(PeriodicTask):
-    "Celery periodic task that collects events from queue."
+    """
+    Celery periodic task that collects events from queue.
+    """
     run_every = timedelta(seconds=settings.TASK_PERIOD)
 
     def run(self, **kwargs):

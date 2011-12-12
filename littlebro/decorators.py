@@ -8,7 +8,6 @@ def track_view(event):
     def my_view(request):
        ...
     """
-    
     def _dec(func):
         def _wrap(request, *args, **kwargs):
             params = {

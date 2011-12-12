@@ -10,7 +10,6 @@ class MongoBackend(BaseBackend):
     Backend to save event records to MongoDB.
     """
     def __init__(self, *args, **kwargs):
-        # Somewhere in here: Test whether Mongo/PyMongo are installed
         BaseBackend.__init__(self, *args, **kwargs)
         self.host = settings.MONGODB_HOST
         self.port = settings.MONGODB_PORT
