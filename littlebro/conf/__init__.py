@@ -5,7 +5,7 @@ from littlebro.conf import defaults
 class Settings(object):
     pass
 
-class LazySettings(LazyObject):
+class LazySettings(LazyObject):    
     def _setup(self):
         self._wrapped = Settings()
         for obj in (defaults, user_settings):
