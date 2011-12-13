@@ -1,4 +1,5 @@
 import importlib
+from time import time
 from littlebro.trackers.base import BaseTracker
 from littlebro.backends.base import InvalidBackendError
 from littlebro import BACKEND_CLASSES
@@ -22,4 +23,4 @@ class DummyTracker(BaseTracker):
                 'Could not find a backend named %s' %  e)
         
         backend = backend_cls()
-        backend.save(event, params, collection)
+        backend.save(event, time(), params, collection)
