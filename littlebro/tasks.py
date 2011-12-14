@@ -1,4 +1,4 @@
-import importlib
+from django.utils import importlib
 from datetime import timedelta
 from celery.task import PeriodicTask
 from celery.registry import tasks

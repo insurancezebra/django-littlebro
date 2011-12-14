@@ -1,4 +1,4 @@
-from littlebro import tracker
+from littlebro.trackers import tracker
 
 class TrackerMiddleware(object):
     """

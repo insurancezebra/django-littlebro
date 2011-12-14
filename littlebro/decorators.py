@@ -1,4 +1,4 @@
-from littlebro import tracker
+from littlebro.trackers import tracker
 
 def track_view(event):
     """

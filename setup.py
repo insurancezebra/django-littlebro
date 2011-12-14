@@ -22,7 +22,7 @@ setup(
     url='https://github.com/cirlabs',
     packages = ['littlebro', 'littlebro.conf', 'littlebro.trackers', 'littlebro.backends'],
     install_requires = [
-        'setuptools>=0.6b1',
+        'importlib',
         'anyjson',
         'carrot>=0.6.0',
         'celery>=0.8.0',
