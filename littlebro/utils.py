@@ -2,7 +2,11 @@ from django.utils import importlib
 from carrot.connection import DjangoBrokerConnection
 from littlebro.conf import settings
 from littlebro.backends.base import InvalidBackendError
-from littlebro.trackers import BACKEND_CLASSES
+
+BACKEND_CLASSES = {
+    'simple': 'simple.SimpleBackend',
+    'mongo': 'mongo.MongoBackend'
+}
 
 def _get_backend_cls():
     """

@@ -7,11 +7,6 @@ TRACKER_CLASSES = {
     'celery': 'celery.CeleryTracker'
 }
 
-BACKEND_CLASSES = {
-    'simple': 'simple.SimpleBackend',
-    'mongo': 'mongo.MongoBackend'
-}
-
 def get_tracker(backend=settings.TRACKER_BACKEND, **kwargs):
     """
     Dynamically retrieves a tracker object according to littlebro settings. Similar
