@@ -21,7 +21,7 @@ def collect_events():
 
         for message in consumer.iterqueue():
             e, t, p, c = message.decode()
-            backend_cls().save(e, p, c)
+            backend_cls.save(e, p, c)
             message.ack()
 
     finally:
