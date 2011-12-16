@@ -12,7 +12,6 @@ BACKEND_CLASSES = {
     'mongo': 'mongo.MongoBackend'
 }
 
-
 def get_tracker(backend=settings.TRACKER_BACKEND, **kwargs):
     """
     Dynamically retrieves a tracker object according to littlebro settings. Similar
