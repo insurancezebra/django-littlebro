@@ -26,10 +26,16 @@ If you want to enable asynchronous tracking using celery, you'll need to follow 
  * Set up a few Celery settings in your settings.py. A simple configuration might look like this:
 
  CARROT_BACKEND = "ghettoq.taproot.Database"
- 
  CELERY_IMPORTS = ('littlebro.tasks',)
- 
  BROKER_BACKEND = "django"
+
+ * You'll also need to add the standard django-celery setup line in your settings.py as well:
+
+ import djcelery
+ djcelery.setup_loader()
+
+ * If you're running celery in production, you'll need to daemonize it. We like to use supervisor for that. Great instructions are available here: http://zoomquiet.org/res/scrapbook/ZqFLOSS/data/20110126211330/index.html
+ * And if you're using mod_wsgi, you'll need to add this setting to your django wsgi file: os.environ["CELERY_LOADER"] = "django"
 
 Finally, if you want to use MongoDB, you'll have to install that as well.
 
