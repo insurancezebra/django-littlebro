@@ -13,15 +13,26 @@ https://github.com/ella/django-event-tracker
 Requirements
 ============
 
-I just started working on this project, so an installation package is forthcoming.
-In the mean time:
+Littlebro will work synchronously out of the box, simply do this:
 
  * pip install django-littlebro
  * add ``littlebro` to your ``INSTALLED_APPS`` and syncdb
  * customize your settings, see ``littlebro.conf.defaults`` for complete list of
    options and their default values
- * If you want to use asynchronous or NoSQL features, install MongoDB and configure celery:
-http://celeryproject.org/introduction.html#configuring-your-django-project-to-use-celery
+
+If you want to enable asynchronous tracking using celery, you'll need to follow a few more steps:
+
+ * add djkombu, ghettoq and djcelery to INSTALLED_APPS. You can also use RabbitMQ instead of ghettoq for better performance.
+ * Set up a few Celery settings in your settings.py. A simple configuration might look like this:
+
+CARROT_BACKEND = "ghettoq.taproot.Database"
+CELERY_IMPORTS = ('littlebro.tasks',)
+BROKER_BACKEND = "django"
+
+Finally, if you want to use MongoDB, you'll have to install that as well.
+
+Yeah, it's a lot of work. Look for this install process to be simplified in future versions.
+
 
 Usage
 =====
