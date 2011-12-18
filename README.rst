@@ -25,9 +25,9 @@ If you want to enable asynchronous tracking using celery, you'll need to follow 
  * add djkombu, ghettoq and djcelery to INSTALLED_APPS. You can also use RabbitMQ instead of ghettoq for better performance.
  * Set up a few Celery settings in your settings.py. A simple configuration might look like this:
 
-CARROT_BACKEND = "ghettoq.taproot.Database"
-CELERY_IMPORTS = ('littlebro.tasks',)
-BROKER_BACKEND = "django"
+ CARROT_BACKEND = "ghettoq.taproot.Database"
+ CELERY_IMPORTS = ('littlebro.tasks',)
+ BROKER_BACKEND = "django"
 
 Finally, if you want to use MongoDB, you'll have to install that as well.
 
