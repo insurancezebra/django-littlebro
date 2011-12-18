@@ -53,7 +53,6 @@ on top of any view in your app:
 
 @track_event('event-name-here')
 def this_is_a_view(request):
-    ...
 
 And finally if you want to track activity within a view, you can take advantage of
 littlebro's granular event tracking as well:
