@@ -1,5 +1,6 @@
 from distutils.core import setup
 import littlebro
+import sys
 
 VERSION = (0, 2, 1)
 __version__ = VERSION
@@ -21,8 +22,8 @@ setup(
     license = 'BSD',
     url='https://github.com/cirlabs',
     packages = ['littlebro', 'littlebro.conf', 'littlebro.trackers', 'littlebro.backends'],
+
     install_requires = [
-        'importlib',
         'anyjson',
         'carrot>=0.6.0',
         'celery>=0.8.0',
@@ -30,4 +31,7 @@ setup(
         'django-celery',
         'django-kombu',
     ]
+
+    if sys.version_info < (2, 7):
+        install_requires.insert(0, 'importlib')
 )
