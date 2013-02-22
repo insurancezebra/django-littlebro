@@ -6,6 +6,18 @@ VERSION = (0, 2, 1)
 __version__ = VERSION
 __versionstr__ = '.'.join(map(str, VERSION))
 
+REQUIRES = [
+        'anyjson',
+        'carrot>=0.6.0',
+        'celery>=0.8.0',
+        'pymongo',
+        'django-celery',
+        'django-kombu',
+    ]
+
+if sys.version_info < (2, 7):
+    REQUIRES.insert(0, 'importlib')
+
 setup(
     name = 'django-littlebro',
     version = __versionstr__,
@@ -22,16 +34,5 @@ setup(
     license = 'BSD',
     url='https://github.com/cirlabs',
     packages = ['littlebro', 'littlebro.conf', 'littlebro.trackers', 'littlebro.backends'],
-
-    install_requires = [
-        'anyjson',
-        'carrot>=0.6.0',
-        'celery>=0.8.0',
-        'pymongo',
-        'django-celery',
-        'django-kombu',
-    ]
-
-    if sys.version_info < (2, 7):
-        install_requires.insert(0, 'importlib')
+    install_requires = REQUIRES
 )
