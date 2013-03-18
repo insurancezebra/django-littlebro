@@ -4,7 +4,7 @@ from littlebro.trackers.base import InvalidTrackerError
 
 TRACKER_CLASSES = {
     'dummy': 'dummy.DummyTracker',
-    'celery': 'celery.CeleryTracker',
+    'celery': 'celery_tracker.CeleryTracker',
     'celery-new': 'celery_new.CeleryNewTracker'
 }
 
