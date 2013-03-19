@@ -13,7 +13,7 @@ class CeleryNewTracker(BaseTracker):
         BaseTracker.__init__(self, *args, **kwargs)
         
     def track_event(self, event, params={}, collection=None):
-        self._track_event.delay(event, time(), params, collection)
+        self._track_event.delay(self, event, time(), params, collection)
 
     @task
     def _track_event(self, event, time=time(), params={}, collection=None):
